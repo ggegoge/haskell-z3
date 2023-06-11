@@ -52,6 +52,11 @@ module Z3.Monad
   , paramsSetSymbol
   , paramsToString
 
+  -- * Global parameters
+  , setGlobalParam
+  , getGlobalParam
+  , globalParamResetAll
+
   -- * Symbols
   , mkIntSymbol
   , mkStringSymbol
@@ -826,6 +831,18 @@ paramsToString :: MonadZ3 z3 => Params -> z3 String
 paramsToString = liftFun1 Base.paramsToString
 
 -- TODO: Z3_params_validate
+
+---------------------------------------------------------------------
+-- Global parameters
+
+setGlobalParam :: MonadZ3 z3 => String -> String -> z3 ()
+setGlobalParam s = liftIO . Base.globalParamSet s
+
+getGlobalParam :: MonadZ3 z3 => String -> z3 (Maybe String)
+getGlobalParam = liftIO . Base.globalParamGet
+
+globalParamResetAll :: MonadZ3 z3 => z3 ()
+globalParamResetAll = liftIO Base.globalParamResetAll
 
 ---------------------------------------------------------------------
 -- Symbols
