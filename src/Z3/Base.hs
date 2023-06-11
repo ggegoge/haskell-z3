@@ -3835,6 +3835,9 @@ data Logic
   | LRA
     -- ^ Closed linear formulas in linear real arithmetic.
 
+  | NRA
+    -- ^ Closed formulas in polynomial real arithmetic.
+
   | QF_ABV
     -- ^ Closed quantifier-free formulas over the theory of bitvectors
     -- and bitvector arrays.
@@ -3919,6 +3922,7 @@ instance Show Logic where
   show AUFLIRA   = "AUFLIRA"
   show AUFNIRA   = "AUFNIRA"
   show LRA       = "LRA"
+  show NRA       = "NRA"
   show QF_ABV    = "QF_ABV"
   show QF_AUFBV  = "QF_AUFBV"
   show QF_AUFLIA = "QF_AUFLIA"
